@@ -25,4 +25,5 @@ Build a bookstore application that connects to a database of available books. Ou
 - 100%: Have a working application that effectively connects to a database and allows the user to interact with it in the above ways.
 
 **How To Access**
+
 Class files are located in "/Bookstore/src/main".
