@@ -25,7 +25,6 @@ public class Main {
 	
 	public static void readCsv() throws IOException {
 		// Title, Author, ISBN, Date Published, Publisher, Pages, Genre, Description, Format, Price
-		String[] = new String[]
 		File file = new File("Files/BookstoreList.csv");
 	    System.out.println(file);
 	    
