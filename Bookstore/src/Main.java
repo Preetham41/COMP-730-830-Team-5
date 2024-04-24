@@ -1,5 +1,3 @@
-package main;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -7,9 +5,12 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import javax.swing.JInternalFrame;
+import java.util.List;
+
 import javax.swing.JLabel;
 import javax.swing.JList;
+import java.awt.GridLayout;
+import javax.swing.BoxLayout;
 
 public class Main {
 
@@ -19,6 +20,14 @@ public class Main {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		List<Book> books = CSVReader.readBooksFromCSV("Files/Bookstore_List.csv");
+        BookStoreInterface bookStore = new BookStoreApp(books);
+
+        // Example usage:
+        bookStore.browseBooks();
+        // bookStore.showBestsellers();
+        // bookStore.showBookwormFacts();
+        
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -50,21 +59,22 @@ public class Main {
 		bookstore_app.getContentPane().add(header, BorderLayout.NORTH);
 		header.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JPanel title = new JPanel();
-		header.add(title);
-		
-		JLabel title_text = new JLabel("TITLE");
-		title.add(title_text);
-		
 		JPanel bestsellers = new JPanel();
 		header.add(bestsellers);
 		
 		JLabel bestsellers_list = new JLabel("BESTSELLERS");
 		bestsellers.add(bestsellers_list);
 		
+		JPanel title = new JPanel();
+		header.add(title);
+		
+		JLabel title_text = new JLabel("TITLE");
+		title.add(title_text);
+		
 		JPanel body = new JPanel();
 		body.setBackground(new Color(215, 226, 246));
 		bookstore_app.getContentPane().add(body, BorderLayout.CENTER);
+		body.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JList book_list = new JList();
 		body.add(book_list);
@@ -72,6 +82,7 @@ public class Main {
 		JPanel footer = new JPanel();
 		footer.setBackground(new Color(182, 221, 249));
 		bookstore_app.getContentPane().add(footer, BorderLayout.SOUTH);
+		footer.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JLabel bookworm_facts = new JLabel("BOOKWORM FACTS");
 		footer.add(bookworm_facts);
