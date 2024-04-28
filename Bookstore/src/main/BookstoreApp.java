@@ -1,3 +1,4 @@
+package main;
 import java.util.List;
 
 public class BookstoreApp implements BookstoreInterface {
@@ -18,12 +19,14 @@ public class BookstoreApp implements BookstoreInterface {
     }
 
     @Override
-    public void showBestsellers() {
-        // Implement showing bestsellers functionality
+    public String showBestsellers() {
+    	String text = "This is an example of a bestseller!";
+    	return text;
     }
 
     @Override
-    public void showBookwormFacts() {
-        // Implement showing bookworm facts functionality
+    public String showBookwormFacts() {
+    	String text = "This is an example of a bookworm fact!";
+    	return text;
     }
 }
