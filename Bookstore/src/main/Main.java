@@ -63,9 +63,15 @@ public class Main {
 		bookstore_app.getContentPane().setBackground(new Color(255, 248, 189));
 		bookstore_app.getContentPane().setLayout(null);
 		
+		JLabel lblNewLabel = new JLabel("COMP 730/830 Book Store");
+		lblNewLabel.setFont(new Font("Helvetica Neue", Font.PLAIN, 36));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(20, 20, 1205, 55);
+		bookstore_app.getContentPane().add(lblNewLabel);
+		
 		header = new JPanel();
 		header.setBackground(new Color(204, 227, 246));
-		header.setBounds(20, 20, 410, 40);
+		header.setBounds(20, 87, 1205, 40);
 		bookstore_app.getContentPane().add(header);
 		header.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -75,7 +81,7 @@ public class Main {
 		
 		body = new JPanel();
 		body.setBackground(new Color(204, 227, 246));
-		body.setBounds(20, 70, 410, 130);
+		body.setBounds(20, 153, 1205, 441);
 		bookstore_app.getContentPane().add(body);
 		
 		book_list_label = new JLabel("Our Selection of Books");
@@ -87,13 +93,13 @@ public class Main {
 		
 		footer = new JPanel();
 		footer.setBackground(new Color(204, 227, 246));
-		footer.setBounds(20, 210, 410, 40);
+		footer.setBounds(20, 626, 1205, 124);
 		bookstore_app.getContentPane().add(footer);
 		
 		bookworm_facts = new JLabel();
 		bookworm_facts.setText(bookStore.showBookwormFacts());
 		footer.add(bookworm_facts);
-		bookstore_app.setBounds(100, 100, 450, 300);
+		bookstore_app.setBounds(100, 100, 1246, 800);
 		bookstore_app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// bookStore.showBookwormFacts();
 		
