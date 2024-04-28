@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JTable;
 
 public class Main {
 
@@ -21,7 +24,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		List<Book> books = CSVReader.readBooksFromCSV("Files/Bookstore_List.csv");
-        BookStoreInterface bookStore = new BookStoreApp(books);
+        BookstoreInterface bookStore = new BookStoreApp(books);
 
         // Example usage:
         bookStore.browseBooks();
@@ -53,41 +56,30 @@ public class Main {
 	private void initialize() {
 		bookstore_app = new JFrame();
 		bookstore_app.getContentPane().setBackground(new Color(255, 248, 189));
+		bookstore_app.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel header = new JPanel();
-		header.setBackground(new Color(182, 221, 249));
 		bookstore_app.getContentPane().add(header, BorderLayout.NORTH);
-		header.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		header.setLayout(new BorderLayout(0, 0));
 		
-		JPanel bestsellers = new JPanel();
-		header.add(bestsellers);
-		
-		JLabel bestsellers_list = new JLabel("BESTSELLERS");
-		bestsellers.add(bestsellers_list);
-		
-		JPanel title = new JPanel();
-		header.add(title);
-		
-		JLabel title_text = new JLabel("TITLE");
-		title.add(title_text);
+		JLabel bestsellers = new JLabel("New label");
+		header.add(bestsellers, BorderLayout.NORTH);
 		
 		JPanel body = new JPanel();
-		body.setBackground(new Color(215, 226, 246));
 		bookstore_app.getContentPane().add(body, BorderLayout.CENTER);
-		body.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JLabel book_list_label = new JLabel("Our Selection of Books");
+		body.add(book_list_label);
 		
 		JList book_list = new JList();
 		body.add(book_list);
 		
 		JPanel footer = new JPanel();
-		footer.setBackground(new Color(182, 221, 249));
 		bookstore_app.getContentPane().add(footer, BorderLayout.SOUTH);
-		footer.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel bookworm_facts = new JLabel("BOOKWORM FACTS");
+		JLabel bookworm_facts = new JLabel("Bookworm Facts");
 		footer.add(bookworm_facts);
 		bookstore_app.setBounds(100, 100, 450, 300);
 		bookstore_app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
 }
