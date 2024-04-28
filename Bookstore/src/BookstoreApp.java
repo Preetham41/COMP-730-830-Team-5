@@ -1,9 +1,9 @@
 import java.util.List;
 
-public class BookStoreApp implements BookstoreInterface {
+public class BookstoreApp implements BookstoreInterface {
     private List<Book> books;
 
-    public BookStoreApp(List<Book> books) {
+    public BookstoreApp(List<Book> books) {
         this.books = books;
     }
 
