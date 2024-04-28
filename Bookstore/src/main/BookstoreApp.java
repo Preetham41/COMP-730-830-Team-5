@@ -9,8 +9,8 @@ public class BookstoreApp implements BookstoreInterface {
     }
 
     @Override
-    public void browseBooks() {
-        // Implement browsing functionality
+    public List<Book> browseBooks() {
+        return books;
     }
 
     @Override

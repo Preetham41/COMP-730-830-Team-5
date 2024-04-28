@@ -4,19 +4,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JList;
-import java.awt.GridLayout;
-import javax.swing.BoxLayout;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JTable;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class Main {
 
@@ -26,7 +20,7 @@ public class Main {
 	private JPanel footer;
 	private JLabel bestsellers;
 	private JLabel book_list_label;
-	private JList book_list;
+	private JList<String> book_list;
 	private JLabel bookworm_facts;
 	
 	/**
@@ -87,9 +81,9 @@ public class Main {
 		book_list_label = new JLabel("Our Selection of Books");
 		body.add(book_list_label);
 		
-		book_list = new JList();
+		List<Book> bookstore_arraylist = bookStore.browseBooks();
+		book_list = new JList<>(bookstore_arraylist.toArray(new String[0]));
 		body.add(book_list);
-		// bookStore.browseBooks();
 		
 		footer = new JPanel();
 		footer.setBackground(new Color(204, 227, 246));
