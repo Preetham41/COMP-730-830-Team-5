@@ -21,7 +21,7 @@ public class CSVReader {
 			
 			while ((row = reader.readLine()) != null) {   //returns a Boolean value
 				String[] line = row.split(splitBy);    // use comma as separator
-				// Title,Author,ISBN,Date Published,Publisher,Pages,Genre,Description,Format,Price
+				// Title, Author, ISBN, Date Published, Publisher, Pages, Genre, Format, Price
 				String title = line[0];
                 String author = line[1];
                 String isbn = line[2];
@@ -29,17 +29,24 @@ public class CSVReader {
                 String publisher = line[4];
                 String pages = line[5];
                 String genre = line[6];
-                // String description = line[7];
                 String format = line[8];
                 String price = line[9];
-                books.add(new Book(title, author, isbn, datePublished, publisher, pages, genre, /* description,*/ format, price));
+                books.add(new Book(title, author, isbn, datePublished, publisher, pages, genre, format, price));
             }
 			
 			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	
+		
+		for (Book book : books) {
+			
+			String string_book = book.toString();
+		    System.out.println("String: " + string_book);
+			// System.out.println(book);
+		}
+		
 		return books;
 	}
+	
 }

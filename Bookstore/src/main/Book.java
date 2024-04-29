@@ -1,33 +1,67 @@
 package main;
 
 public class Book {
-    private String title;
+	private String title;
     private String author;
     private String isbn;
     private String datePublished;
     private String publisher;
     private String pages;
     private String genre;
-    private String description;
     private String format;
     private String price;
 
     public Book(String title, String author, String isbn, String datePublished, String publisher, String pages, String genre, /*String description,*/ String format, String price) {
-        this.title = title;
+    	this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.datePublished = datePublished;
         this.publisher = publisher;
         this.pages = pages;
         this.genre = genre;
-        this.description = description;
         this.format = format;
         this.price = price;
     }
     
-    public String getBookTitle() {
+    // Getters and setters
+    
+    public String getTitle() {
     	return title;
     }
-
-    // Getters and setters
+    
+    public String getAuthor() {
+    	return author;
+    }
+    
+    public String getISBN() {
+    	return isbn;
+    }
+    
+    public String getDatePublished() {
+    	return datePublished;
+    }
+    
+    public String getPublisher() {
+    	return publisher;
+    }
+    
+    public String getPages() {
+    	return pages;
+    }
+    
+    public String getGenre() {
+    	return genre;
+    }
+    
+    public String getFormat() {
+    	return format;
+    }
+    
+    public String getPrice() {
+    	return price;
+    }
+    
+    public void getDescription() {
+		
+	}
 }

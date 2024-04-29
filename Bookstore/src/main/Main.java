@@ -49,6 +49,11 @@ public class Main {
 	public Main(BookstoreInterface bookStore) {
 		initialize(bookStore);
 	}
+	
+	// @Override
+	// public String toString() {
+	//	return "object";
+	//}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -85,8 +90,9 @@ public class Main {
 		body.setBounds(20, 183, 1205, 422);
 		bookstore_app.getContentPane().add(body);
 		
-		List<Book> bookstore_arraylist = bookStore.browseBooks();
-		book_list = new JList<String>(bookstore_arraylist.toArray(new String[0]));
+		// List<Book> bookstore_arraylist = bookStore.browseBooks();
+		// System.out.println(bookstore_arraylist);
+		book_list = new JList<>();
 		body.add(book_list);
 		
 		footer = new JPanel();
