@@ -61,7 +61,9 @@ public class Book {
     	return price;
     }
     
-    public void getDescription() {
+    public String getDetails() {
+		String details = title + "\n" + author + "\n" + isbn + "\n" + datePublished + "\n" + publisher + "\n" + pages + "\n" + genre + "\n" + format + "\n" + price;
 		
+		return details;
 	}
 }

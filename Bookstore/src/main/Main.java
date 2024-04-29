@@ -15,17 +15,24 @@ import javax.swing.SwingConstants;
 import javax.swing.DefaultListModel;
 import javax.swing.ListSelectionModel;
 import java.awt.BorderLayout;
+import javax.swing.JSplitPane;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class Main {
 
 	private JFrame bookstore_app;
 	private JPanel header;
-	private JPanel body;
 	private JPanel footer;
 	private JLabel bestsellers;
 	private JLabel book_list_label;
 	private JList<String> bookList;
 	private JLabel bookworm_facts;
+	private JSplitPane body;
 	
 	/**
 	 * Launch the application.
@@ -83,11 +90,12 @@ public class Main {
 		book_list_label.setBounds(20, 127, 1205, 55);
 		bookstore_app.getContentPane().add(book_list_label);
 		
-		body = new JPanel();
+		body = new JSplitPane();
 		body.setBackground(new Color(204, 227, 246));
 		body.setBounds(20, 183, 1205, 422);
-		body.setLayout(new BorderLayout(0, 0));
 		bookstore_app.getContentPane().add(body);
+		
+		
 		
 		List<String> availableBooks = bookStore.browseBooks();
 		// Create a DefaultListModel to store the strings
@@ -96,10 +104,26 @@ public class Main {
         	availableBooksModel.addElement(availableBook);
         }
 		bookList = new JList<String>(availableBooksModel);
+		JLabel bookDetails = new JLabel();
+		
+		bookList.addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                if (!arg0.getValueIsAdjusting()) {
+                	bookDetails.setText(bookList.getSelectedValue().toString());
+                }
+            }
+        });
+		
+		body.setLeftComponent(bookList);
+		
 		bookList.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		bookList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		bookList.setBackground(new Color(204, 227, 246));
-		body.add(bookList);
+		
+		
+		body.setRightComponent(bookDetails);
 		
 		footer = new JPanel();
 		footer.setBackground(new Color(204, 227, 246));

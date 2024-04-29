@@ -10,8 +10,8 @@ public class BookstoreApp implements BookstoreInterface {
         this.books = books;
     }
 
-    @Override
     public List<String> browseBooks() {
+    	
     	List<String> availableBooks = new ArrayList<>();
     	String availableBook = "";
     	
@@ -23,6 +23,19 @@ public class BookstoreApp implements BookstoreInterface {
     	
     	return availableBooks;
     }
+    
+    public String showBookDetails() {
+    	String details = "";
+    	for (Book book : books) {
+    		System.out.println(book.getDetails());
+    		details = book.getDetails();
+    		
+    	}
+    	
+    	return details;
+    }
+    
+    
 
     @Override
     public void buyBook(Book book, int quantity, boolean delivery) {
