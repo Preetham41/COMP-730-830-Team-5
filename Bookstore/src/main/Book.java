@@ -1,4 +1,5 @@
 package main;
+
 public class Book {
     private String title;
     private String author;
@@ -22,6 +23,10 @@ public class Book {
         this.description = description;
         this.format = format;
         this.price = price;
+    }
+    
+    public String getBookTitle() {
+    	return title;
     }
 
     // Getters and setters

@@ -1,4 +1,5 @@
 package main;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -73,16 +74,19 @@ public class Main {
 		bestsellers.setText(bookStore.showBestsellers());
 		header.add(bestsellers);
 		
+		book_list_label = new JLabel("Our Selection of Books");
+		book_list_label.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
+		book_list_label.setHorizontalAlignment(SwingConstants.CENTER);
+		book_list_label.setBounds(20, 127, 1205, 55);
+		bookstore_app.getContentPane().add(book_list_label);
+		
 		body = new JPanel();
 		body.setBackground(new Color(204, 227, 246));
-		body.setBounds(20, 153, 1205, 441);
+		body.setBounds(20, 183, 1205, 422);
 		bookstore_app.getContentPane().add(body);
 		
-		book_list_label = new JLabel("Our Selection of Books");
-		body.add(book_list_label);
-		
 		List<Book> bookstore_arraylist = bookStore.browseBooks();
-		book_list = new JList<>(bookstore_arraylist.toArray(new String[0]));
+		book_list = new JList<String>(bookstore_arraylist.toArray(new String[0]));
 		body.add(book_list);
 		
 		footer = new JPanel();
@@ -95,7 +99,6 @@ public class Main {
 		footer.add(bookworm_facts);
 		bookstore_app.setBounds(100, 100, 1246, 800);
 		bookstore_app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// bookStore.showBookwormFacts();
 		
 	}
 }
