@@ -12,6 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.DefaultListModel;
+import javax.swing.ListSelectionModel;
+import java.awt.BorderLayout;
 
 public class Main {
 
@@ -21,7 +24,7 @@ public class Main {
 	private JPanel footer;
 	private JLabel bestsellers;
 	private JLabel book_list_label;
-	private JList<String> book_list;
+	private JList<String> bookList;
 	private JLabel bookworm_facts;
 	
 	/**
@@ -49,11 +52,6 @@ public class Main {
 	public Main(BookstoreInterface bookStore) {
 		initialize(bookStore);
 	}
-	
-	// @Override
-	// public String toString() {
-	//	return "object";
-	//}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -88,12 +86,20 @@ public class Main {
 		body = new JPanel();
 		body.setBackground(new Color(204, 227, 246));
 		body.setBounds(20, 183, 1205, 422);
+		body.setLayout(new BorderLayout(0, 0));
 		bookstore_app.getContentPane().add(body);
 		
-		// List<Book> bookstore_arraylist = bookStore.browseBooks();
-		// System.out.println(bookstore_arraylist);
-		book_list = new JList<>();
-		body.add(book_list);
+		List<String> availableBooks = bookStore.browseBooks();
+		// Create a DefaultListModel to store the strings
+        DefaultListModel<String> availableBooksModel = new DefaultListModel<>();
+        for (String availableBook : availableBooks) {
+        	availableBooksModel.addElement(availableBook);
+        }
+		bookList = new JList<String>(availableBooksModel);
+		bookList.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		bookList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		bookList.setBackground(new Color(204, 227, 246));
+		body.add(bookList);
 		
 		footer = new JPanel();
 		footer.setBackground(new Color(204, 227, 246));

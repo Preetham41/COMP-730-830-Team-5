@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookstoreApp implements BookstoreInterface {
@@ -10,8 +11,17 @@ public class BookstoreApp implements BookstoreInterface {
     }
 
     @Override
-    public List<Book> browseBooks() {
-        return books;
+    public List<String> browseBooks() {
+    	List<String> availableBooks = new ArrayList<>();
+    	String availableBook = "";
+    	
+    	for (Book book : books) {
+    		System.out.println(book.getTitle() + "    " + book.getAuthor());	// print to console
+    		availableBook = book.getTitle();
+    		availableBooks.add(availableBook);
+		}
+    	
+    	return availableBooks;
     }
 
     @Override

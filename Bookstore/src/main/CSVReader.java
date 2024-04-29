@@ -39,13 +39,6 @@ public class CSVReader {
 			e.printStackTrace();
 		}
 		
-		for (Book book : books) {
-			
-			String string_book = book.toString();
-		    System.out.println("String: " + string_book);
-			// System.out.println(book);
-		}
-		
 		return books;
 	}
 	
