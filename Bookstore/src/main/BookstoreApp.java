@@ -24,18 +24,24 @@ public class BookstoreApp implements BookstoreInterface {
     	return availableBooks;
     }
     
-    public String showBookDetails() {
-    	String details = "";
+    public List<String> showBookDetails(String title) {
+    	List<String> details = new ArrayList<>();
     	for (Book book : books) {
-    		System.out.println(book.getDetails());
-    		details = book.getDetails();
-    		
+    		if (title.equals(book.getTitle())) {
+        		details.add(book.getTitle());
+        		details.add(book.getAuthor());
+        		details.add(book.getISBN());
+        		details.add(book.getDatePublished());
+        		details.add(book.getPublisher());
+        		details.add(book.getPages());
+        		details.add(book.getGenre());
+        		details.add(book.getFormat());
+        		details.add(book.getPrice());
+        		System.out.println(details);
+    		}
     	}
-    	
     	return details;
     }
-    
-    
 
     @Override
     public void buyBook(Book book, int quantity, boolean delivery) {

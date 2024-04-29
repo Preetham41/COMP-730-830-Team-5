@@ -22,6 +22,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.JScrollPane;
 
 public class Main {
 
@@ -104,26 +105,58 @@ public class Main {
         	availableBooksModel.addElement(availableBook);
         }
 		bookList = new JList<String>(availableBooksModel);
-		JLabel bookDetails = new JLabel();
+		JLabel bookTitle = new JLabel();
+		bookTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel bookAuthor = new JLabel();
+		JLabel bookISBN = new JLabel();
+		JLabel bookDatePublished = new JLabel();
+		JLabel bookPublisher = new JLabel();
+		JLabel bookPages = new JLabel();
+		JLabel bookGenre = new JLabel();
+		JLabel bookFormat = new JLabel();
+		JLabel bookPrice = new JLabel();
 		
 		bookList.addListSelectionListener(new ListSelectionListener() {
 
             @Override
             public void valueChanged(ListSelectionEvent arg0) {
                 if (!arg0.getValueIsAdjusting()) {
-                	bookDetails.setText(bookList.getSelectedValue().toString());
+                	String selectedTitle = bookList.getSelectedValue().toString();
+                	List<String> selectedTitleDetails = bookStore.showBookDetails(selectedTitle);
+                	bookTitle.setText(selectedTitleDetails.get(0));
+                	bookAuthor.setText(selectedTitleDetails.get(1));
+                	bookISBN.setText(selectedTitleDetails.get(2));
+                	bookDatePublished.setText(selectedTitleDetails.get(3));
+                	bookPublisher.setText(selectedTitleDetails.get(4));
+                	bookPages.setText(selectedTitleDetails.get(5));
+                	bookGenre.setText(selectedTitleDetails.get(6));
+                	bookFormat.setText(selectedTitleDetails.get(7));
+                	bookPrice.setText(selectedTitleDetails.get(8));
                 }
             }
         });
 		
-		body.setLeftComponent(bookList);
-		
 		bookList.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		bookList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		bookList.setBackground(new Color(204, 227, 246));
+		body.setLeftComponent(bookList);
+		//body.setRightComponent(bookDetails);
 		
+		JPanel detailPane = new JPanel();
+		detailPane.setBackground(new Color(204, 227, 246));
+		detailPane.setBounds(0, 0, 4, 4);
+		body.setRightComponent(detailPane);
+		detailPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		detailPane.add(bookTitle);
+		detailPane.add(bookAuthor);
+		detailPane.add(bookISBN);
+		detailPane.add(bookDatePublished);
+		detailPane.add(bookPublisher);
+		detailPane.add(bookPages);
+		detailPane.add(bookGenre);
+		detailPane.add(bookFormat);
+		detailPane.add(bookPrice);
 		
-		body.setRightComponent(bookDetails);
 		
 		footer = new JPanel();
 		footer.setBackground(new Color(204, 227, 246));
