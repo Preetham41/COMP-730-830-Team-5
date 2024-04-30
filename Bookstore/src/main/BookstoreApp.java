@@ -83,7 +83,10 @@ public class BookstoreApp implements BookstoreInterface {
     // show bestselling books
     @Override
     public String showBestsellers() {
-    	
+    	List<String> TopBooks = new ArrayList<>();
+    	for (Book book : books) {
+    		TopBooks.add(book.getTitle());
+    	}
     }
 
     // show book worm facts
