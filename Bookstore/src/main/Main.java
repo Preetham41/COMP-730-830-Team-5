@@ -13,6 +13,7 @@ import javax.swing.JList;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.ListSelectionModel;
 import java.awt.BorderLayout;
 import javax.swing.JSplitPane;
@@ -23,6 +24,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.JScrollPane;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Main {
 
@@ -106,7 +110,6 @@ public class Main {
         }
 		bookList = new JList<String>(availableBooksModel);
 		JLabel bookTitle = new JLabel();
-		bookTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		JLabel bookAuthor = new JLabel();
 		JLabel bookISBN = new JLabel();
 		JLabel bookYear = new JLabel();
@@ -117,16 +120,47 @@ public class Main {
 		JLabel bookQuantity = new JLabel();
 		JLabel bookPrice = new JLabel();
 		
+		JButton buyButton = new JButton("Buy");
+		buyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent action) {
+			}
+		});
+		
+		buyButton.setVisible(false);
+		
+		bookTitle.setFont(new Font("Helvetica Neue", Font.BOLD, 16));
+		bookAuthor.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
+		bookISBN.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
+		bookYear.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
+		bookPublisher.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
+		bookPages.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
+		bookGenre.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
+		bookFormat.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
+		bookQuantity.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
+		bookPrice.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
+		
+		bookTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		bookAuthor.setHorizontalAlignment(SwingConstants.CENTER);
+		bookISBN.setHorizontalAlignment(SwingConstants.CENTER);
+		bookYear.setHorizontalAlignment(SwingConstants.CENTER);
+		bookPublisher.setHorizontalAlignment(SwingConstants.CENTER);
+		bookPages.setHorizontalAlignment(SwingConstants.CENTER);
+		bookGenre.setHorizontalAlignment(SwingConstants.CENTER);
+		bookFormat.setHorizontalAlignment(SwingConstants.CENTER);
+		bookQuantity.setHorizontalAlignment(SwingConstants.CENTER);
+		bookPrice.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		
 		bookList.addListSelectionListener(new ListSelectionListener() {
 
             @Override
-            public void valueChanged(ListSelectionEvent arg0) {
-                if (!arg0.getValueIsAdjusting()) {
+            public void valueChanged(ListSelectionEvent value) {
+                if (!value.getValueIsAdjusting()) {
                 	String selectedTitle = bookList.getSelectedValue().toString();
                 	List<String> selectedTitleDetails = bookStore.showBookDetails(selectedTitle);
                 	bookTitle.setText(selectedTitleDetails.get(0));
-                	bookAuthor.setText(selectedTitleDetails.get(1));
-                	bookISBN.setText(selectedTitleDetails.get(2));
+                	bookAuthor.setText("by " + selectedTitleDetails.get(1));
+                	bookISBN.setText("ISBN-10: " + selectedTitleDetails.get(2));
                 	bookYear.setText(selectedTitleDetails.get(3));
                 	bookPublisher.setText(selectedTitleDetails.get(4));
                 	bookPages.setText(selectedTitleDetails.get(5) + " pages");
@@ -134,6 +168,8 @@ public class Main {
                 	bookFormat.setText(selectedTitleDetails.get(7));
                 	bookQuantity.setText("Quantity: " + selectedTitleDetails.get(8));
                 	bookPrice.setText("$" + selectedTitleDetails.get(9));
+                	buyButton.setVisible(true);
+                	
                 }
             }
         });
@@ -148,7 +184,7 @@ public class Main {
 		detailPane.setBackground(new Color(204, 227, 246));
 		detailPane.setBounds(0, 0, 4, 4);
 		body.setRightComponent(detailPane);
-		detailPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		detailPane.setLayout(new GridLayout(11, 0, 0, 0));
 		detailPane.add(bookTitle);
 		detailPane.add(bookAuthor);
 		detailPane.add(bookISBN);
@@ -159,6 +195,7 @@ public class Main {
 		detailPane.add(bookFormat);
 		detailPane.add(bookQuantity);
 		detailPane.add(bookPrice);
+		detailPane.add(buyButton);
 		
 		
 		footer = new JPanel();

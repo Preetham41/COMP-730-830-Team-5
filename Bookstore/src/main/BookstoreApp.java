@@ -16,7 +16,7 @@ public class BookstoreApp implements BookstoreInterface {
     	String availableBook = "";
     	
     	for (Book book : books) {
-    		System.out.println(book.getTitle() + "    " + book.getAuthor());	// print to console
+    		System.out.println(book.getTitle() + "    " + book.getAuthor() + "    " + book.getISBN() + "    " + book.getYear() + "    " + book.getPublisher() + "    " + book.getPages() + "    " + book.getGenre() + "    " + book.getFormat() + "    " + book.getQuantity() + "    " + book.getPrice());	// print to console
     		availableBook = book.getTitle();
     		availableBooks.add(availableBook);
 		}
