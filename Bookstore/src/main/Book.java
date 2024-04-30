@@ -1,8 +1,5 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Book {
 	private String title;
     private String author;
@@ -69,14 +66,4 @@ public class Book {
     public String getPrice() {
     	return price;
     }
-    
-    /*
-    public List<String> getDetails() {
-    	List<String> details = new ArrayList<>();
-    	details.add(getTitle(), getAuthor(), getISBN(), getDatePublished());
-		String details = title + "\n" + author + "\n" + isbn + "\n" + datePublished + "\n" + publisher + "\n" + pages + "\n" + genre + "\n" + format + "\n" + price;
-		
-		return details;
-	}
-	*/
 }

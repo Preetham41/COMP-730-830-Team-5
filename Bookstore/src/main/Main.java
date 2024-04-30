@@ -30,14 +30,24 @@ import java.awt.event.ActionEvent;
 
 public class Main {
 
-	private JFrame bookstore_app;
+	// application frame
+	private JFrame bookstoreAppFrame; 	
+	// sections
 	private JPanel header;
-	private JPanel footer;
-	private JLabel bestsellers;
-	private JLabel book_list_label;
-	private JList<String> bookList;
-	private JLabel bookworm_facts;
 	private JSplitPane body;
+	private JPanel footer;
+	// lists
+	private List<String> availableBooks;
+	private JList<String> bookList;
+	// list model
+	private DefaultListModel<String> availableBooksModel;
+	// section titles
+	private JLabel bestsellers, bookListLabel, bookwormFacts;
+	// book details
+	private JLabel title, bookTitle, bookAuthor, bookISBN, bookYear, bookPublisher, bookPages, bookGenre, bookFormat, bookQuantity, bookPrice;
+	// button
+	private JButton buyButton;
+	
 	
 	/**
 	 * Launch the application.
@@ -50,7 +60,7 @@ public class Main {
 			public void run() {
 				try {
 					Main window = new Main(bookStore);
-					window.bookstore_app.setVisible(true);
+					window.bookstoreAppFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -69,60 +79,68 @@ public class Main {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(BookstoreInterface bookStore) {
-		bookstore_app = new JFrame();
-		bookstore_app.getContentPane().setBackground(new Color(255, 248, 189));
-		bookstore_app.getContentPane().setLayout(null);
+		// main application frame
+		bookstoreAppFrame = new JFrame();
+		bookstoreAppFrame.getContentPane().setBackground(new Color(255, 248, 189));
+		bookstoreAppFrame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("COMP 730/830 Book Store");
-		lblNewLabel.setFont(new Font("Helvetica Neue", Font.PLAIN, 36));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(20, 20, 1205, 55);
-		bookstore_app.getContentPane().add(lblNewLabel);
+		// application title
+		title = new JLabel("COMP 730/830 Book Store");
+		title.setFont(new Font("Helvetica Neue", Font.PLAIN, 36));
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		title.setBounds(20, 20, 1205, 55);
+		bookstoreAppFrame.getContentPane().add(title);
 		
+		// header section
 		header = new JPanel();
 		header.setBackground(new Color(204, 227, 246));
 		header.setBounds(20, 87, 1205, 40);
-		bookstore_app.getContentPane().add(header);
+		bookstoreAppFrame.getContentPane().add(header);
 		header.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
+		// bestsellers
 		bestsellers = new JLabel();
 		bestsellers.setText(bookStore.showBestsellers());
 		header.add(bestsellers);
 		
-		book_list_label = new JLabel("Our Selection of Books");
-		book_list_label.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
-		book_list_label.setHorizontalAlignment(SwingConstants.CENTER);
-		book_list_label.setBounds(20, 127, 1205, 55);
-		bookstore_app.getContentPane().add(book_list_label);
+		// body label
+		bookListLabel = new JLabel("Our Selection of Books");
+		bookListLabel.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
+		bookListLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		bookListLabel.setBounds(20, 127, 1205, 55);
+		bookstoreAppFrame.getContentPane().add(bookListLabel);
 		
+		// body section
 		body = new JSplitPane();
 		body.setBackground(new Color(204, 227, 246));
 		body.setBounds(20, 183, 1205, 422);
-		bookstore_app.getContentPane().add(body);
+		bookstoreAppFrame.getContentPane().add(body);
 		
-		
-		
-		List<String> availableBooks = bookStore.browseBooks();
+		// model for book list
+		availableBooks = bookStore.browseBooks();
 		// Create a DefaultListModel to store the strings
-        DefaultListModel<String> availableBooksModel = new DefaultListModel<>();
+        availableBooksModel = new DefaultListModel<>();
         for (String availableBook : availableBooks) {
         	availableBooksModel.addElement(availableBook);
         }
+        
+        // initializing body.leftpanel components
 		bookList = new JList<String>(availableBooksModel);
-		JLabel bookTitle = new JLabel();
-		JLabel bookAuthor = new JLabel();
-		JLabel bookISBN = new JLabel();
-		JLabel bookYear = new JLabel();
-		JLabel bookPublisher = new JLabel();
-		JLabel bookPages = new JLabel();
-		JLabel bookGenre = new JLabel();
-		JLabel bookFormat = new JLabel();
-		JLabel bookQuantity = new JLabel();
-		JLabel bookPrice = new JLabel();
-		
-		JButton buyButton = new JButton("Buy");
+		bookTitle = new JLabel();
+		bookAuthor = new JLabel();
+		bookISBN = new JLabel();
+		bookYear = new JLabel();
+		bookPublisher = new JLabel();
+		bookPages = new JLabel();
+		bookGenre = new JLabel();
+		bookFormat = new JLabel();
+		bookQuantity = new JLabel();
+		bookPrice = new JLabel();
+		buyButton = new JButton("Buy");
 		buyButton.setVisible(false);
 		
+		// fonts
+		bookList.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		bookTitle.setFont(new Font("Helvetica Neue", Font.BOLD, 16));
 		bookAuthor.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
 		bookISBN.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
@@ -133,7 +151,9 @@ public class Main {
 		bookFormat.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
 		bookQuantity.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
 		bookPrice.setFont(new Font("Helvetica Neue", Font.PLAIN, 14));
+		buyButton.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
 		
+		// center book details
 		bookTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		bookAuthor.setHorizontalAlignment(SwingConstants.CENTER);
 		bookISBN.setHorizontalAlignment(SwingConstants.CENTER);
@@ -145,9 +165,10 @@ public class Main {
 		bookQuantity.setHorizontalAlignment(SwingConstants.CENTER);
 		bookPrice.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		
+		// additional bookList attributes
+		bookList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		bookList.setBackground(new Color(204, 227, 246));
 		bookList.addListSelectionListener(new ListSelectionListener() {
-
             @Override
             public void valueChanged(ListSelectionEvent value) {
                 if (!value.getValueIsAdjusting()) {
@@ -164,31 +185,14 @@ public class Main {
                 	bookQuantity.setText("Quantity: " + selectedTitleDetails.get(8));
                 	bookPrice.setText("$" + selectedTitleDetails.get(9));
                 	buyButton.setVisible(true);
-                	
-                	buyButton.addActionListener(new ActionListener() {
-            			public void actionPerformed(ActionEvent action) {
-            				bookISBN.setVisible(false);
-            				bookYear.setVisible(false);
-            				bookPublisher.setVisible(false);
-            				bookPages.setVisible(false);
-            				bookGenre.setVisible(false);            				
-            			}
-            		});
-                	
                 }
             }
         });
 		
-		bookList.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		bookList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		bookList.setBackground(new Color(204, 227, 246));
-		body.setLeftComponent(bookList);
-		//body.setRightComponent(bookDetails);
-		
+		// body.rightpanel component (details)
 		JPanel detailPane = new JPanel();
 		detailPane.setBackground(new Color(204, 227, 246));
 		detailPane.setBounds(0, 0, 4, 4);
-		body.setRightComponent(detailPane);
 		detailPane.setLayout(new GridLayout(11, 0, 0, 0));
 		detailPane.add(bookTitle);
 		detailPane.add(bookAuthor);
@@ -202,17 +206,22 @@ public class Main {
 		detailPane.add(bookPrice);
 		detailPane.add(buyButton);
 		
+		// setting split pane components
+		body.setLeftComponent(bookList);
+		body.setRightComponent(detailPane);
 		
+		// footer section
 		footer = new JPanel();
 		footer.setBackground(new Color(204, 227, 246));
 		footer.setBounds(20, 626, 1205, 124);
-		bookstore_app.getContentPane().add(footer);
+		bookstoreAppFrame.getContentPane().add(footer);
 		
-		bookworm_facts = new JLabel();
-		bookworm_facts.setText(bookStore.showBookwormFacts());
-		footer.add(bookworm_facts);
-		bookstore_app.setBounds(100, 100, 1246, 800);
-		bookstore_app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// bookworm facts
+		bookwormFacts = new JLabel();
+		bookwormFacts.setText(bookStore.showBookwormFacts());
+		footer.add(bookwormFacts);
+		bookstoreAppFrame.setBounds(100, 100, 1246, 800);
+		bookstoreAppFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
 }

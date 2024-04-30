@@ -10,8 +10,8 @@ public class BookstoreApp implements BookstoreInterface {
         this.books = books;
     }
 
+    // show list of available books
     public List<String> browseBooks() {
-    	
     	List<String> availableBooks = new ArrayList<>();
     	String availableBook = "";
     	
@@ -20,10 +20,10 @@ public class BookstoreApp implements BookstoreInterface {
     		availableBook = book.getTitle();
     		availableBooks.add(availableBook);
 		}
-    	
     	return availableBooks;
     }
     
+    // show book details
     public List<String> showBookDetails(String title) {
     	List<String> details = new ArrayList<>();
     	for (Book book : books) {
@@ -44,17 +44,21 @@ public class BookstoreApp implements BookstoreInterface {
     	return details;
     }
 
-    @Override
-    public void buyBook(Book book, int quantity, boolean delivery) {
-        // button eventlistener
-    }
+    
+	/*
+	 @Override
+	 public void buyBook(Book book, int quantity, boolean delivery) { //
+	 	button event listener }
+	 */
 
+    // show bestselling books
     @Override
     public String showBestsellers() {
     	String text = "This is an example of a bestseller!";
     	return text;
     }
 
+    // show bookworm facts
     @Override
     public String showBookwormFacts() {
     	String text = "This is an example of a bookworm fact!";
