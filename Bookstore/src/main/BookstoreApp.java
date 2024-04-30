@@ -46,7 +46,7 @@ public class BookstoreApp implements BookstoreInterface {
 
     @Override
     public void buyBook(Book book, int quantity, boolean delivery) {
-        // Implement buying functionality
+        // button eventlistener
     }
 
     @Override

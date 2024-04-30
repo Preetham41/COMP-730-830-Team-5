@@ -121,11 +121,6 @@ public class Main {
 		JLabel bookPrice = new JLabel();
 		
 		JButton buyButton = new JButton("Buy");
-		buyButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent action) {
-			}
-		});
-		
 		buyButton.setVisible(false);
 		
 		bookTitle.setFont(new Font("Helvetica Neue", Font.BOLD, 16));
@@ -169,6 +164,16 @@ public class Main {
                 	bookQuantity.setText("Quantity: " + selectedTitleDetails.get(8));
                 	bookPrice.setText("$" + selectedTitleDetails.get(9));
                 	buyButton.setVisible(true);
+                	
+                	buyButton.addActionListener(new ActionListener() {
+            			public void actionPerformed(ActionEvent action) {
+            				bookISBN.setVisible(false);
+            				bookYear.setVisible(false);
+            				bookPublisher.setVisible(false);
+            				bookPages.setVisible(false);
+            				bookGenre.setVisible(false);            				
+            			}
+            		});
                 	
                 }
             }
