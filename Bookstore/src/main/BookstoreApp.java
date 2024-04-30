@@ -31,11 +31,12 @@ public class BookstoreApp implements BookstoreInterface {
         		details.add(book.getTitle());
         		details.add(book.getAuthor());
         		details.add(book.getISBN());
-        		details.add(book.getDatePublished());
+        		details.add(book.getYear());
         		details.add(book.getPublisher());
         		details.add(book.getPages());
         		details.add(book.getGenre());
         		details.add(book.getFormat());
+        		details.add(book.getQuantity());
         		details.add(book.getPrice());
         		System.out.println(details);
     		}

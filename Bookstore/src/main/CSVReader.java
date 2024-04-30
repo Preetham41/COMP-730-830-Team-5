@@ -25,13 +25,14 @@ public class CSVReader {
 				String title = line[0];
                 String author = line[1];
                 String isbn = line[2];
-                String datePublished = line[3];
+                String year = line[3];
                 String publisher = line[4];
                 String pages = line[5];
                 String genre = line[6];
-                String format = line[8];
+                String format = line[7];
+                String quantity = line[8];
                 String price = line[9];
-                books.add(new Book(title, author, isbn, datePublished, publisher, pages, genre, format, price));
+                books.add(new Book(title, author, isbn, year, publisher, pages, genre, format, quantity, price));
             }
 			
 			reader.close();

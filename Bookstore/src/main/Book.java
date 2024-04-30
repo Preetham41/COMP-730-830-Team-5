@@ -7,22 +7,24 @@ public class Book {
 	private String title;
     private String author;
     private String isbn;
-    private String datePublished;
+    private String year;
     private String publisher;
     private String pages;
     private String genre;
     private String format;
+    private String quantity;
     private String price;
 
-    public Book(String title, String author, String isbn, String datePublished, String publisher, String pages, String genre, /*String description,*/ String format, String price) {
+    public Book(String title, String author, String isbn, String year, String publisher, String pages, String genre, String format, String quantity, String price) {
     	this.title = title;
         this.author = author;
         this.isbn = isbn;
-        this.datePublished = datePublished;
+        this.year = year;
         this.publisher = publisher;
         this.pages = pages;
         this.genre = genre;
         this.format = format;
+        this.quantity = quantity;
         this.price = price;
     }
     
@@ -40,8 +42,8 @@ public class Book {
     	return isbn;
     }
     
-    public String getDatePublished() {
-    	return datePublished;
+    public String getYear() {
+    	return year;
     }
     
     public String getPublisher() {
@@ -58,6 +60,10 @@ public class Book {
     
     public String getFormat() {
     	return format;
+    }
+    
+    public String getQuantity() {
+    	return quantity;
     }
     
     public String getPrice() {

@@ -109,11 +109,12 @@ public class Main {
 		bookTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		JLabel bookAuthor = new JLabel();
 		JLabel bookISBN = new JLabel();
-		JLabel bookDatePublished = new JLabel();
+		JLabel bookYear = new JLabel();
 		JLabel bookPublisher = new JLabel();
 		JLabel bookPages = new JLabel();
 		JLabel bookGenre = new JLabel();
 		JLabel bookFormat = new JLabel();
+		JLabel bookQuantity = new JLabel();
 		JLabel bookPrice = new JLabel();
 		
 		bookList.addListSelectionListener(new ListSelectionListener() {
@@ -126,12 +127,13 @@ public class Main {
                 	bookTitle.setText(selectedTitleDetails.get(0));
                 	bookAuthor.setText(selectedTitleDetails.get(1));
                 	bookISBN.setText(selectedTitleDetails.get(2));
-                	bookDatePublished.setText(selectedTitleDetails.get(3));
+                	bookYear.setText(selectedTitleDetails.get(3));
                 	bookPublisher.setText(selectedTitleDetails.get(4));
-                	bookPages.setText(selectedTitleDetails.get(5));
+                	bookPages.setText(selectedTitleDetails.get(5) + " pages");
                 	bookGenre.setText(selectedTitleDetails.get(6));
                 	bookFormat.setText(selectedTitleDetails.get(7));
-                	bookPrice.setText(selectedTitleDetails.get(8));
+                	bookQuantity.setText("Quantity: " + selectedTitleDetails.get(8));
+                	bookPrice.setText("$" + selectedTitleDetails.get(9));
                 }
             }
         });
@@ -150,11 +152,12 @@ public class Main {
 		detailPane.add(bookTitle);
 		detailPane.add(bookAuthor);
 		detailPane.add(bookISBN);
-		detailPane.add(bookDatePublished);
+		detailPane.add(bookYear);
 		detailPane.add(bookPublisher);
 		detailPane.add(bookPages);
 		detailPane.add(bookGenre);
 		detailPane.add(bookFormat);
+		detailPane.add(bookQuantity);
 		detailPane.add(bookPrice);
 		
 		
