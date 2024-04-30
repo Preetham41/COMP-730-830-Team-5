@@ -87,6 +87,14 @@ public class BookstoreApp implements BookstoreInterface {
     	for (Book book : books) {
     		TopBooks.add(book.getTitle());
     	}
+    	String[] TopReads = TopBooks.toArray(new String[0]);
+    	String Sales = "Top 3 Bestsellers are 1: " + TopReads[0] + " 2: " + TopReads[1] + " 3: " + TopReads[2];
+    	String Rates = "Top 3 Best Rated Books are 1:" + TopReads[9] + " 2: " + TopReads[10] + " 3: " + TopReads[4];
+    	String Movie = "Top 3 Movie/Series Adaptations are 1: " + TopReads[0] + " 2: " + TopReads[1] + " 3: " + TopReads[8];
+    	String[] TopList = {Sales, Rates, Movie};
+    	Random random1 = new Random();
+    	int randomIndex1 = random1.nextInt(TopList.length);
+    	return TopList[randomIndex1];
     }
 
     // show book worm facts
