@@ -282,7 +282,7 @@ public class Main {
                         
 
                         // Path to the CSV file
-                        String filePath = "C:/Users/HP/Java_Output/output"+i+".csv";
+                        String filePath = "Output"+i+".csv";
 
                         // Write user input to the CSV file
                         try (FileWriter writer = new FileWriter(filePath)) {
